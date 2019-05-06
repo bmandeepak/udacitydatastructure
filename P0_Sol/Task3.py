@@ -73,5 +73,5 @@ for row in calls:
 		answering_no = row[1].replace(' ','')
 		if re.search('^\(080\)', answering_no):
 			to_fixed_lines+=1
-percentage_to_fixed = to_fixed_lines/float(total_calls)
-print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(round(percentage_to_fixed,2)*100))
+percentage_to_fixed = to_fixed_lines*100/float(total_calls)
+print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(round(percentage_to_fixed,2)))

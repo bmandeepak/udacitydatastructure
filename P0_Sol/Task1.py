@@ -20,10 +20,10 @@ Print a message:
 """
 unique_phone = []
 for row in texts:
-	incoming_number = row[0][0]
+	incoming_number = row[0]
 	if incoming_number.find(' ')!=-1:
 		incoming_number.replace(' ','')
-	answering_number  = row[0][1]
+	answering_number  = row[1]
 	if answering_number.find(' ')!=-1:
 		answering_number.replace(' ','')
 	if incoming_number not in unique_phone:
@@ -31,8 +31,8 @@ for row in texts:
 	if answering_number not in unique_phone:
 		unique_phone.append(answering_number)
 
+
 for row in calls:
-	
 	incoming_number = row[0]
 	if incoming_number.find(' ')!=-1:
 		incoming_number.replace(' ','')

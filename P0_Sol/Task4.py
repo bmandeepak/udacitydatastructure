@@ -24,24 +24,26 @@ Print a message:
 <list of numbers>
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
-outgoing_calls = []
-for row in calls:
-	outgoing_calls.append(row[1].replace(' ',''))
-
-incoming_sms = []
-outgoing_sms = []
-for row in calls:
-	outgoing_sms.append(row[0].replace(' ',''))
-	incoming_sms.append(row[1].replace(' ',''))
-
-outgoing_calls_unique = list(set(outgoing_calls))
-outgoing_sms_unique = list(set(outgoing_sms))
-incoming_sms_unique = list(set(incoming_sms))
+call_record = []
 telemarketers = []
+
+incoming_calls = []
+
 for row in calls:
-	incoming_call = row[0].replace(' ','')
-	if incoming_call not in outgoing_calls_unique or incoming_call not in outgoing_calls_unique or incoming_call not in incoming_sms_unique:
-		telemarketers.append(incoming_call)
+	incoming_calls.append(row[1].replace(' ',''))
+
+incoming_calls_unique = list(set(incoming_calls))
+
+for row in texts:
+	call_record.append(row[0].replace(' ',''))
+	call_record.append(row[1].replace(' ',''))
+
+call_record_unique = list(set(call_record))
+
+for row in calls:
+	outgoing_call = row[0].replace(' ','')
+	if outgoing_call not in call_record_unique or outgoing_call not in incoming_calls_unique: 
+		telemarketers.append(outgoing_call)
 
 telemarketers_unique = sorted(list(set(telemarketers)))
 print('These numbers could be telemarketers:')
