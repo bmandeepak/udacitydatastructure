@@ -46,6 +46,8 @@ for row in calls:
 		telemarketers.append(outgoing_call)
 
 telemarketers_unique = sorted(list(set(telemarketers)))
+
+# Complexity is - O(nlogn)+3*O(n)
 print('These numbers could be telemarketers:')
 for item in telemarketers_unique:
 	print(item)

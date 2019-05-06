@@ -45,6 +45,8 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 
+# Complexity for for loop O(n) where is number of rows
+
 codes  = []
 for row in calls:
 	incoming_no = row[0].replace(' ','')
@@ -53,11 +55,14 @@ for row in calls:
 		if answering_no.find('(0')!=-1:
 			fixed_line_code = answering_no.split(')')[0]
 			codes.append(fixed_line_code[1:])
+		# Regex complexity is O(n) - where n is the length of the string
 		if re.search("^140", answering_no):
 			codes.append(answering_no[:3])
 		if re.search("^7|^8|^9", answering_no):
 			codes.append(answering_no[:4])
 
+
+# Sorting a list complexity is O(nlogn)
 unique_codes = sorted(list(set(codes)))
 print('The numbers called by people in Bangalore have codes:')
 for code in unique_codes:
@@ -66,12 +71,18 @@ for code in unique_codes:
 
 total_calls = 0
 to_fixed_lines = 0
+
+
 for row in calls:
 	incoming_no = row[0].replace(' ','')
+	# Regex complexity is O(n)
 	if re.search('^\(080\)', incoming_no):
 		total_calls+=1
 		answering_no = row[1].replace(' ','')
 		if re.search('^\(080\)', answering_no):
 			to_fixed_lines+=1
+
+# Total Complexity - 2*O(n)+O(nlogn) approx O(n)
+
 percentage_to_fixed = to_fixed_lines*100/float(total_calls)
 print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(round(percentage_to_fixed,2)))

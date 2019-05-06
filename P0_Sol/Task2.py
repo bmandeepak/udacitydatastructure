@@ -27,6 +27,8 @@ max_call_time = 0
 telephone_no = None
 month = None
 year = None
+
+# Code Complexity is O(n)
 for row in calls:
 	telephone_no = row[0]
 	date_time_str = row[2]

@@ -19,6 +19,9 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 unique_phone = []
+
+
+# Complexity for the code is O(n) where n is the number of rows in the texts
 for row in texts:
 	incoming_number = row[0]
 	if incoming_number.find(' ')!=-1:
@@ -32,6 +35,7 @@ for row in texts:
 		unique_phone.append(answering_number)
 
 
+# Complexity for the code is O(n) where n is the number of rows in the texts
 for row in calls:
 	incoming_number = row[0]
 	if incoming_number.find(' ')!=-1:
@@ -43,4 +47,7 @@ for row in calls:
 		unique_phone.append(incoming_number)
 	if answering_number not in unique_phone:
 		unique_phone.append(answering_number)
+
+# Algorithmic complexity - 2* O(n) - approx O(n)
+
 print('There are {} different telephone numbers in the records'.format(len(unique_phone)))
